@@ -26,7 +26,6 @@ function initApp() {
   initTheme();
   loadItems();
 
-  // Event Listeners
   shoppingForm.addEventListener("submit", handleFormSubmit);
 
   for (let button of filterButtons) {
@@ -50,9 +49,7 @@ function initApp() {
   }
 }
 
-/* ==========================================================
-   Theme (Dark / Light Mode)
-   ========================================================== */
+// Theme
 function initTheme() {
   const savedTheme = localStorage.getItem("shoppingTheme");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -88,9 +85,7 @@ function toggleTheme() {
   setTheme(newTheme);
 }
 
-/* ==========================================================
-   LocalStorage and Data Loading
-   ========================================================== */
+// Storage
 function saveToLS() {
   const listItems = shoppingList.querySelectorAll("li");
   const items = [];
@@ -119,9 +114,7 @@ function loadItems() {
   updateUI();
 }
 
-/* ==========================================================
-   Item Management (Add / Remove / Clear)
-   ========================================================== */
+// Items
 function generateId() {
   return Date.now().toString();
 }
@@ -157,14 +150,12 @@ function addItem(name) {
 }
 
 function creatListItem(item) {
-  // Checkbox
   const input = document.createElement("input");
   input.type = "checkbox";
   input.classList.add("form-check-input");
   input.checked = Boolean(item.completed);
   input.addEventListener("change", toggleCompleted);
 
-  // Item Name
   const div = document.createElement("div");
   div.textContent = item.name;
   div.classList.add("item-name");
@@ -173,13 +164,11 @@ function creatListItem(item) {
   div.addEventListener("blur", closeEditMode);
   div.addEventListener("keydown", cancelEnter);
 
-  // Delete Icon
   const deleteIcon = document.createElement("i");
   deleteIcon.className = "fa-solid fa-xmark text-danger delete-icon";
   deleteIcon.setAttribute("title", "Delete");
   deleteIcon.addEventListener("click", removeItem);
 
-  // List Item (li)
   const li = document.createElement("li");
   li.className = "border rounded p-3 mb-2";
   li.setAttribute("item-id", item.id);
@@ -236,9 +225,7 @@ function clearCompleted() {
   updateUI();
 }
 
-/* ==========================================================
-   Inline Editing
-   ========================================================== */
+// Inline edit
 function openEditMode(e) {
   const li = e.target.closest("li");
 
@@ -252,7 +239,6 @@ function closeEditMode(e) {
   e.target.contentEditable = "false";
   const text = e.target.textContent.trim();
 
-  // If left empty, revert to previous or keep intact
   if (text.length === 0) {
     loadItems();
     return;
@@ -270,9 +256,7 @@ function cancelEnter(e) {
   }
 }
 
-/* ==========================================================
-   Filtering and Live Search
-   ========================================================== */
+// Filters & search
 function handleFilterSelection(e) {
   const filterBtn = e.currentTarget;
   currentFilter = filterBtn.getAttribute("item-filter");
@@ -301,7 +285,6 @@ function applyFilterAndSearch() {
     const name = (li.querySelector(".item-name").textContent || "").toLowerCase();
     const completed = li.hasAttribute("item-completed");
 
-    // Filter match
     let matchesFilter = true;
     if (currentFilter === "completed") {
       matchesFilter = completed;
@@ -309,9 +292,7 @@ function applyFilterAndSearch() {
       matchesFilter = !completed;
     }
 
-    // Search query match
     const matchesSearch = searchQuery === "" || name.includes(searchQuery);
-
     const isVisible = matchesFilter && matchesSearch;
 
     if (isVisible) {
@@ -324,7 +305,6 @@ function applyFilterAndSearch() {
     }
   }
 
-  // Show alert when search yields 0 matches
   const totalItems = liItems.length;
   if (searchAlert) {
     const showSearchAlert = totalItems > 0 && searchQuery !== "" && visibleCount === 0;
@@ -332,9 +312,7 @@ function applyFilterAndSearch() {
   }
 }
 
-/* ==========================================================
-   Counters and UI Update
-   ========================================================== */
+// Counters & UI
 function updateCounters() {
   const allItems = shoppingList.querySelectorAll("li");
   const completedItems = shoppingList.querySelectorAll("li[item-completed]");
@@ -347,7 +325,6 @@ function updateCounters() {
   if (counterPending) counterPending.textContent = `Remaining: ${pending}`;
   if (counterCompleted) counterCompleted.textContent = `Completed: ${completed}`;
 
-  // Disable "Clear Completed" button if there are no completed items
   if (clearCompletedBtn) {
     clearCompletedBtn.disabled = completed === 0;
     clearCompletedBtn.classList.toggle("opacity-50", completed === 0);

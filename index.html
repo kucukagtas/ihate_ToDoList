@@ -16,7 +16,7 @@
   </head>
   <body>
     <div class="container app-container py-4">
-      <!-- Header with Dark Mode Toggle -->
+      <!-- Header -->
       <header class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0 fw-bold d-flex align-items-center gap-2">
           <i class="fa-solid fa-basket-shopping text-primary"></i>
@@ -32,7 +32,7 @@
         </button>
       </header>
 
-      <!-- Add Item Form -->
+      <!-- Form -->
       <form class="shopping-form border rounded p-3 mb-3 bg-body shadow-sm">
         <div class="input-group">
           <input
@@ -49,9 +49,9 @@
         </div>
       </form>
 
-      <!-- Controls Area (Search, Badges, Filters) -->
+      <!-- Controls -->
       <div id="controls_container" class="mb-3">
-        <!-- Live Search -->
+        <!-- Search -->
         <div class="input-group input-group-sm mb-3 shadow-sm">
           <span class="input-group-text bg-body text-muted border-end-0">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -65,7 +65,7 @@
           />
         </div>
 
-        <!-- Counters Badges -->
+        <!-- Counters -->
         <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
           <span class="badge bg-secondary-subtle text-secondary-emphasis border flex-fill py-2" id="counter_total">
             Total: 0
@@ -78,7 +78,7 @@
           </span>
         </div>
 
-        <!-- Filter Buttons -->
+        <!-- Filters -->
         <div class="filter-buttons d-flex gap-2">
           <button item-filter="all" class="btn btn-primary flex-fill btn-sm">All</button>
           <button item-filter="incompleted" class="btn btn-secondary flex-fill btn-sm">
@@ -90,20 +90,19 @@
         </div>
       </div>
 
-      <!-- Empty State Alert -->
+      <!-- Alerts -->
       <div class="alert alert-custom text-center py-3 mb-3 d-none" id="empty_alert">
         <i class="fa-solid fa-circle-info me-2"></i>No items yet!
       </div>
 
-      <!-- Search No Match Alert -->
       <div class="alert alert-secondary text-center py-2 mb-3 d-none" id="search_alert">
         <i class="fa-solid fa-search me-1"></i>No matching items found.
       </div>
 
-      <!-- Shopping List -->
+      <!-- List -->
       <ul class="shopping-list list-unstyled mb-3"></ul>
 
-      <!-- Action Buttons -->
+      <!-- Actions -->
       <div class="action-buttons d-flex justify-content-between gap-2">
         <button class="btn btn-outline-warning btn-sm clear-completed d-flex align-items-center gap-1">
           <i class="fa-solid fa-check-double"></i>
