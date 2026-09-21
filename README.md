@@ -22,26 +22,9 @@ A modern, responsive, and lightweight shopping & to-do list web application buil
 - 📱 **100% Responsive & Touch-Optimized:** Designed with mobile-first principles; easy-to-tap targets and smooth hover transitions on desktop.
 - 🎨 **Tailored Palette:** Customized Bootstrap theme centered around a refined `#329966` emerald green color scheme.
 
----
+## 🌐 Live Demo
 
-## 🚀 Deployment to GitHub Pages
-
-This project is pre-configured for automated deployment to GitHub Pages via GitHub Actions ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)).
-
-### How to Enable:
-1. Push your changes to your repository:
-   ```bash
-   git add .
-   git commit -m "Deploy shopping list app"
-   git push origin main
-   ```
-2. On GitHub, go to your repository: **Settings** > **Pages**.
-3. Under **Build and deployment** > **Source**, select **GitHub Actions**.
-4. That's it! GitHub will automatically deploy your website upon every push to the `main` branch.
-5. Your live app will be accessible at:
-   ```text
-   https://kucukagtas.github.io/ihate_ToDoList/
-   ```
+🔗 **[https://kucukagtas.github.io/ihate_ToDoList/](https://kucukagtas.github.io/ihate_ToDoList/)**
 
 ---
 
